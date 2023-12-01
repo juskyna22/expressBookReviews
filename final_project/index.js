@@ -19,6 +19,7 @@ callback: It is a middleware function or a series/array of middleware functions.
 const app = express();
 
 app.use(express.json());
+
 //a session object with user-defined secret as a middle ware to intercept the requests and ensure that the sessionis valid before processing
 app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true})) 
 
@@ -39,7 +40,7 @@ app.use("/customer/auth/*", function auth(req,res,next){
             return res.status(403).json({message: "User not logged in"})
         }
 });
-//Previouse block of code was added per updating the code for the authentication mechanism step
+//Previous block of code was added per updating the code for the authentication mechanism step
 
 const PORT =5000;
 
