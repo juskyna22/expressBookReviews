@@ -59,26 +59,26 @@ const username = req.body.username;
 regd_users.put("/auth/review/:isbn", (req, res) => {
     //Write your code here
     console.log("Hello this is the PUT REQUEST function")
-    const based_isbn = req.params.isbn;
-    console.log(based_isbn);
-    let filtered_book = books[based_isbn]
-    console.log(filtered_book);
-    if (filtered_book) { //Check if the book exists
-        let new_review = req.query.reviews;
-        console.log("New Review: "+new_review)
+    const byISBN = req.params.isbn;
+    console.log(byISBN);
+    let scannedBooks = books[byISBN]
+    console.log(scannedBooks);
+    if (scannedBooks) { //To see if the book exists or not 
+        let addedReview = req.query.reviews;
+        console.log("New Review: "+addedReview)
         for(var key in books) {
             if(books.hasOwnProperty(key)) {
-                var value = books[key];
-                console.log("Value: "+value)
-                if  (key == based_isbn) {
-                    value["reviews"] = new_review;
-                    console.log("Updated value reviews: " + value["reviews"]);
+                var updatedReview = books[key];
+                console.log("Review: "+updatedReview)
+                if  (key == byISBN) {
+                    updatedReview["reviews"] = addedReview;
+                    console.log("New review: " + updatedReview["reviews"]);
                 }
 
             }
         }
 
-        res.send(`The review for the book with isbn ${based_isbn} has been added/updated. `)
+        res.send(`Your amazing review for the book with isbn ${byISBN} has been added or modified for all to see. `)
     }
 
 });
