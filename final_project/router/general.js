@@ -45,20 +45,20 @@ public_users.get('/isbn/:isbn',function (req, res) {
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
   //Write your code here
-  based_author = req.params.author;
-  booksarray = books;
-  new_array = {};
+  byAuthor = req.params.author;
+  booksCollection = books;
+  newCollection = {};
   
-  for(var key in booksarray) {
-      if(booksarray.hasOwnProperty(key)) {
-          var value = booksarray[key];
-          if  (value["author"] == based_author) {
-              new_array[key] = value;
+  for(var key in newCollection) {
+      if(booksCollection.hasOwnProperty(key)) {
+          var value = booksCollection[key];
+          if  (value["author"] == byAuthor) {
+              newCollection[key] = value;
           }
 
       }
   }
-  res.send(new_array);
+  res.send(newCollection);
       
   });
   
