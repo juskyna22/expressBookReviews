@@ -98,7 +98,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
         for(var key in books) {
             if(books.hasOwnProperty(key)) {
                 var updatedReview = books[key];
-                console.log("Value: "+updatedReview)
+                console.log("Deleted Review: "+updatedReview)
                 if  (key == byISBN) {
                     updatedReview["reviews"] = addedReview;
                     console.log("Deleted Review: " + updatedReview["reviews"]);
