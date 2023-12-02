@@ -49,7 +49,7 @@ public_users.get('/author/:author',function (req, res) {
   booksCollection = books;
   newCollection = {};
   
-  for(var key in newCollection) {
+  for(var key in booksCollection) {
       if(booksCollection.hasOwnProperty(key)) {
           var value = booksCollection[key];
           if  (value["author"] == byAuthor) {
@@ -66,20 +66,20 @@ public_users.get('/author/:author',function (req, res) {
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
   //Write your code here
-  based_title = req.params.title;
-  booksarray = books;
-  new_array = {};
+  byTitle = req.params.title;
+  booksCollection = books;
+  newCollection = {};
   
-  for(var key in booksarray) {
-      if(booksarray.hasOwnProperty(key)) {
-          var value = booksarray[key];
-          if  (value["title"] == based_title) {
-              new_array[key] = value;
+  for(var key in booksCollection) {
+      if(booksCollection.hasOwnProperty(key)) {
+          var value = booksCollection[key];
+          if  (value["title"] == byTitle) {
+              newCollection[key] = value;
           }
 
       }
   }
-  res.send(new_array);
+  res.send(newCollection);
 });
 
 //  Get book review
