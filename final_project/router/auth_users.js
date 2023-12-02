@@ -58,7 +58,7 @@ const username = req.body.username;
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
     //Write your code here
-    console.log("Hello this is the PUT REQUEST function")
+    
     const byISBN = req.params.isbn;
     console.log(byISBN);
     let scannedBooks = books[byISBN]
@@ -85,7 +85,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 
 regd_users.delete("/auth/review/:isbn", (req, res) => {
 
-    console.log("Hello this is the DELETE REQUEST function")
+    
     uName = req.body.username;
     console.log("Username: " + uName);
     const based_isbn = req.params.isbn;
