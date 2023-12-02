@@ -63,7 +63,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
     console.log(byISBN);
     let scannedBooks = books[byISBN]
     console.log(scannedBooks);
-    if (scannedBooks) { //To see if the book exists or not 
+    if (scannedBooks) {
         let addedReview = req.query.reviews;
         console.log("New Review: "+addedReview)
         for(var key in books) {
