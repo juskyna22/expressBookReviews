@@ -37,8 +37,21 @@ public_users.get('/',function (req, res) {
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
   //Write your code here
-  const isbn = req.params.isbn;
-  res.send(books[isbn]);
+ const isbn = req.params.isbn;
+  booksCollection = books;
+  newCollection = {};
+  
+  for(var key in booksCollection) {
+      if(booksCollection.hasOwnProperty(key)) {
+          var value = booksCollection[key];
+          if  (value["isbn"] == (isbn)) {
+              newCollection[key] = value;
+          }
+
+      }
+  }
+  res.send(newCollection);
+  
   
  });
   
