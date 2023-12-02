@@ -85,22 +85,22 @@ public_users.get('/title/:title',function (req, res) {
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
   //Write your code here
-  based_isbn = req.params.isbn;
-  booksarray = books;
-  new_array = {};
-  another_array = {};
+  byISBN = req.params.isbn;
+  booksCollection = books;
+  newCollection = {};
+  difCollection = {};
   
-  for(var key in booksarray) {
-      if(booksarray.hasOwnProperty(key)) {
-          var value = booksarray[key];
-          if  (key == based_isbn) {
-              new_array[key] = value;
+  for(var key in booksCollection) {
+      if(booksCollection.hasOwnProperty(key)) {
+          var value = booksCollection[key];
+          if  (key == byISBN) {
+              newCollection[key] = value;
           }
-          another_array[key] = new_array["review"];
+         difCollection[key] = newCollection["review"];
 
       }
   }
-  res.send(another_array);
+  res.send(difCollection);
 
 });
 
