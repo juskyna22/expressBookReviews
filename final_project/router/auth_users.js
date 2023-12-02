@@ -48,9 +48,9 @@ const username = req.body.username;
   }
   console.log("Access Token: " + accessToken + " Username: " + username);
   console.log("req.session.authorization: " + req.session.authorization);
-  return res.status(200).send("User successfully logged in");
+  return res.status(200).send("Successful login you all star member");
   } else {
-    return res.status(208).json({message: "Invalid Login. Check username and password"});
+    return res.status(208).json({message: "Oops! Check login credentials and try again"});
   }
     
 });
