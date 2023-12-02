@@ -47,4 +47,4 @@ const PORT =5000;
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);
 
-app.listen(PORT,()=>console.log("Server is an absulutely awesome purple butthole"));
+app.listen(PORT,()=>console.log("Server is an absulutely awesome dimension to play in"));
