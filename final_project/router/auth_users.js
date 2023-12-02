@@ -86,28 +86,28 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 regd_users.delete("/auth/review/:isbn", (req, res) => {
 
     
-    uName = req.body.username;
-    console.log("Username: " + uName);
-    const based_isbn = req.params.isbn;
-    console.log(based_isbn);
-    let filtered_book = books[based_isbn]
-    console.log(filtered_book);
-    if (filtered_book) { //Check if the book exists
-        let new_review = {};
-        console.log("New Review: "+new_review)
+    userName = req.body.username;
+    console.log("Username: " + userName);
+    const byISBN = req.params.isbn;
+    console.log(byISBN);
+    let scannedBooks = books[byISBN]
+    console.log(scannedBooks);
+    if (scannedBooks) { //Check if the book exists
+        let addedReview = {};
+        console.log("New Review: "+addedReview)
         for(var key in books) {
             if(books.hasOwnProperty(key)) {
-                var value = books[key];
-                console.log("Value: "+value)
-                if  (key == based_isbn) {
-                    value["reviews"] = new_review;
-                    console.log("Updated value reviews: " + value["reviews"]);
+                var updatedReview = books[key];
+                console.log("Value: "+updatedReview)
+                if  (key == byISBN) {
+                    updatedReview["reviews"] = addedReview;
+                    console.log("Deleted Review: " + updatedReview["reviews"]);
                 }
 
             }
         }
 
-        res.send(`The review for the book by ${uName} with isbn ${based_isbn} has been deleted. `)
+        res.send(`Your poorly written review ${userName} with isbn ${byISBN} has been deleted. `)
     }
 });
 
