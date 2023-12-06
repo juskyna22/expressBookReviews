@@ -98,24 +98,23 @@ public_users.get('/title/:title',function (req, res) {
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
   //Write your code here
-  byISBN = req.params.isbn;
+const isbn = req.params.isbn;
   booksCollection = books;
   newCollection = {};
-  difCollection = {};
-  
+
   for(var key in booksCollection) {
       if(booksCollection.hasOwnProperty(key)) {
           var value = booksCollection[key];
-          if  (key == byISBN) {
-              newCollection[key] = value;
+          if  (value["isbn"] == (isbn))  {
+              newCollection[key] = value["reviews"];
           }
-         difCollection[key] = newCollection["review"];
-
       }
   }
-  res.send(difCollection);
+  res.send(newCollection);
+
 
 });
+
 
 module.exports.general = public_users;
 
