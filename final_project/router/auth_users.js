@@ -110,7 +110,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
         res.send(`Your poorly written review ${userName} with isbn ${byISBN} has been deleted. `)
     }
 });
-
+//T7 username:TimmyTaffy password:purpleunicorebutter
 module.exports.authenticated = regd_users;
 module.exports.isValid = isValid;
 module.exports.users = users;
