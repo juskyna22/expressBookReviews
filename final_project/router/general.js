@@ -158,28 +158,28 @@ public_users.get('/title/:title',function (req, res) {
 
 public_users.get('/books/title/:title',function (req, res) {
 
-    const findBooksByAuthor = new Promise((resolve, reject) => {
+    const findBooksByTitle = new Promise((resolve, reject) => {
 
-    let byAuthor = [];
+    let byTitle = [];
     let isbns = Object.keys(books);
     isbns.forEach((isbn) => {
-      if(books[isbn]["author"] === req.params.author) {
-        byAuthor.push({"isbn":isbn,
+      if(books[isbn]["title"] === req.params.title) {
+        byTitle.push({"isbn":isbn,
                             "title":books[isbn]["title"],
                             "reviews":books[isbn]["reviews"]});
-      resolve(res.send(JSON.stringify({byAuthor}, null, 4)));
+      resolve(res.send(JSON.stringify({byTitle}, null, 4)));
       }
 
 
     });
-    reject(res.send("The author is lost in a different place and doesn't exist here "))
+    reject(res.send("The title is lost in a different place and doesn't exist here "))
         
     });
 
-    findBooksByAuthor.then(function(){
+    findBooksByTitle.then(function(){
             console.log("Promise is is fullfilled");
    }).catch(function () { 
-                console.log('The author is lost in a different place and doesn't exist here');
+                console.log('The title is lost in a different place and doesn't exist here');
   });
 
   });
