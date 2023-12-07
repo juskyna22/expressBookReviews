@@ -77,7 +77,34 @@ public_users.get('/author/:author',function (req, res) {
   res.send(newCollection);
       
   });
-  
+//Get book details based on author with call back and promiser
+public_users.get('/books/author/:author',function (req, res) {
+
+    const findBooksByAuthor = new Promise((resolve, reject) => {
+
+    let byAuthor = [];
+    let isbns = Object.keys(books);
+    isbns.forEach((isbn) => {
+      if(books[isbn]["author"] === req.params.author) {
+        byAuthor.push({"isbn":isbn,
+                            "title":books[isbn]["title"],
+                            "reviews":books[isbn]["reviews"]});
+      resolve(res.send(JSON.stringify({byAuthor}, null, 4)));
+      }
+
+
+    });
+    reject(res.send("The author is lost in a different place and doesn't exist here "))
+        
+    });
+
+    findBooksByAuthor.then(function(){
+            console.log("Promise is is fullfilled");
+   }).catch(function () { 
+                console.log('The author is lost in a different place and doesn't exist here');
+  });
+
+  });
 
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
