@@ -32,7 +32,7 @@ public_users.get('/',function (req, res) {
         resolve(res.send(JSON.stringify({books}, null, 4)));
       });
 
-      get_books.then(() => console.log("Promise for Task 10 resolved"));
+      get_books.then(() => console.log("Promisefor getting all the books has been resolved, yay"));
 
   });
 
