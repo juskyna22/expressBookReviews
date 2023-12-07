@@ -57,7 +57,36 @@ public_users.get('/isbn/:isbn',function (req, res) {
   
   
  });
-  
+
+//Get book details based on ISBN with callback and promises
+public_users.get('/books/isbn/:isbn',function (req, res) {
+
+    const findBooksByisbn = new Promise((resolve, reject) => {
+
+    let byisbn = [];
+    let isbns = Object.keys(books);
+    isbns.forEach((isbn) => {
+      if(books[isbn]["author"] === req.params.author) {
+        byisbn.push({"isbn":isbn,
+                            "title":books[isbn]["title"],
+                            "reviews":books[isbn]["reviews"]});
+      resolve(res.send(JSON.stringify({byisbn}, null, 4)));
+      }
+
+
+    });
+    reject(res.send("The ISBN is lost in a different place and doesn't exist here "))
+        
+    });
+
+    findBooksByisbn.then(function(){
+            console.log("Promise is is fullfilled");
+   }).catch(function () { 
+                console.log('The ISBN is lost in a different place and doesn't exist here');
+  });
+
+  });
+
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
   //Write your code here
@@ -77,7 +106,7 @@ public_users.get('/author/:author',function (req, res) {
   res.send(newCollection);
       
   });
-//Get book details based on author with call back and promiser
+//Get book details based on author with call back and promises
 public_users.get('/books/author/:author',function (req, res) {
 
     const findBooksByAuthor = new Promise((resolve, reject) => {
@@ -125,7 +154,36 @@ public_users.get('/title/:title',function (req, res) {
   res.send(newCollection);
 });
 
-//  Get book review
+//Get all books based on title with callback
+
+public_users.get('/books/title/:title',function (req, res) {
+
+    const findBooksByAuthor = new Promise((resolve, reject) => {
+
+    let byAuthor = [];
+    let isbns = Object.keys(books);
+    isbns.forEach((isbn) => {
+      if(books[isbn]["author"] === req.params.author) {
+        byAuthor.push({"isbn":isbn,
+                            "title":books[isbn]["title"],
+                            "reviews":books[isbn]["reviews"]});
+      resolve(res.send(JSON.stringify({byAuthor}, null, 4)));
+      }
+
+
+    });
+    reject(res.send("The author is lost in a different place and doesn't exist here "))
+        
+    });
+
+    findBooksByAuthor.then(function(){
+            console.log("Promise is is fullfilled");
+   }).catch(function () { 
+                console.log('The author is lost in a different place and doesn't exist here');
+  });
+
+  });
+
 public_users.get('/review/:isbn',function (req, res) {
   //Write your code here
 const isbn = req.params.isbn;
